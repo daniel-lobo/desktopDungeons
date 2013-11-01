@@ -2,7 +2,10 @@ package model.board.level;
 
 import java.awt.Point;
 
+
 import model.board.Board;
+import model.element.Wall;
+import model.fighter.FighterHero;
 import model.fighter.Hero;
 
 public class GameLevelX extends Board{
@@ -11,8 +14,38 @@ public class GameLevelX extends Board{
 	
 
 	@Override
+	/*
+	 * Puede estar todo al reves, porque Laura uso otra Logica
+	 */
 	protected void setContents() {
-		get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new Hero());
+		get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new FighterHero());
+		get(1,6).setContent(new Goblin());
+		get(7,7).setContent(new Serpent());
+		get(8,3).setContent(new Golem());
+		// ponemos las paredes 
+		get(2,6).setContent(new Wall());
+		get(3,6).setContent(new Wall());
+		get(4,6).setContent(new Wall());
+		get(5,6).setContent(new Wall());
+		get(8,6).setContent(new Wall());
+		get(9,6).setContent(new Wall());
+		get(10,6).setContent(new Wall());
+		get(11,6).setContent(new Wall());
+		get(8,0).setContent(new Wall());
+		get(8,1).setContent(new Wall());
+		get(8,2).setContent(new Wall());
+		get(8,4).setContent(new Wall());
+		get(8,5).setContent(new Wall());
+		get(8,8).setContent(new Wall());
+		get(7,8).setContent(new Wall());
+		get(7,9).setContent(new Wall());
+		get(7,10).setContent(new Wall());
+		get(7,11).setContent(new Wall());
+		get(7,8).setContent(new Wall());
+		get(7,8).setContent(new Wall());
+		get(9,8).setContent(new Wall());
+		get(10,8).setContent(new Wall());
+		
 	}
 
 	@Override
