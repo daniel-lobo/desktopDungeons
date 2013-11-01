@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 import model.Game;
 import model.board.Move;
+import model.board.level.GameLevelX;
 
 public class Main extends JFrame {
 	private static final long serialVersionUID = 1L;

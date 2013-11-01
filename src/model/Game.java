@@ -31,7 +31,6 @@ public class Game {
 		return board.get(x, y);
 	}
 	
-	
 	public Hero getHero() {
 		return board.getHero();
 	}
