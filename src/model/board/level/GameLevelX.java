@@ -18,7 +18,7 @@ public class GameLevelX extends Board{
 	 * Puede estar todo al reves, porque Laura uso otra Logica
 	 */
 	protected void setContents() {
-		get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new FighterHero());
+		//get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new FighterHero()); aqui no es donde se agrega el hero
 		get(1,6).setContent(new Goblin());
 		get(7,7).setContent(new Serpent());
 		get(8,3).setContent(new Golem());
