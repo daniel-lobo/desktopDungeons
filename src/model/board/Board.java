@@ -2,6 +2,7 @@ package model.board;
 
 import java.awt.Point;
 
+import model.fighter.FighterHero;
 import model.fighter.Hero;
 
 public abstract class Board {
@@ -25,7 +26,7 @@ public abstract class Board {
 		setContents();
 		heroPosition = getHeroInitPosition();
 		// Aqui se debe ubicar inicialmente al jugador
-		//g[heroPosition.y][heroPosition.x].setContent( ........ );
+		g[heroPosition.y][heroPosition.x].setContent( new Hero(new FighterHero() ));
 		cleanFog(heroPosition);
 	}	
 
