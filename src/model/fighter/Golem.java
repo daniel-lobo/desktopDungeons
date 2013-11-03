@@ -11,4 +11,22 @@ public class Golem extends FighterEnemy implements Content {
 		super(aLevel);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	protected Content changeFor() {
+		return new Sword(this.getStrength());
+	}
+	
+	@Override
+	public int getStrength() {
+		return (int) Math.floor(super.getStrength()*FUERZA);
+	}
+	@Override
+	public int getMaxHealth() {
+		return (int)Math.floor(super.getMaxHealth()*SALUD);
+	}
+	@Override
+	public void heal(int value) {
+		//exception
+	}
 }

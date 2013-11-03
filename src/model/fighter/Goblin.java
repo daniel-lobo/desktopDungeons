@@ -11,4 +11,14 @@ public class Goblin extends FighterEnemy implements Content{
 		super(aLevel);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public int getStrength() {
+		return (int) Math.floor(super.getStrength()*FUERZA);
+	}
+	@Override
+	public int getMaxHealth() {
+		return (int)Math.floor(super.getMaxHealth()*SALUD);
+	}
+	
 }

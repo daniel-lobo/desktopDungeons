@@ -20,8 +20,18 @@ public abstract class FighterEnemy implements Fighter {
 	}
 	@Override
 	public Content interact(Fighter hero) {
-		return null;
+		hero.injured(strength);
+		if(hero.isAlive()){
+			return this;
+		}
+		return changeFor();
 	}
+
+	//el método se ocupa de devolver el tipo de contenido que debe reemplazar a la instancia cuando esta "desaparece"
+	protected Content changeFor(){
+		return new Blood();
+	}
+	
 	@Override
 	public boolean isAlive() {
 		return health == 0;
@@ -32,9 +42,12 @@ public abstract class FighterEnemy implements Fighter {
 			health = 0;
 		}
 	}
+	//este método es necesario para los Goblin, en los otros dos está reecrito y anulado.
 	@Override
 	public void heal(int value) {
-		//falta la excepcion
+		if((health += value) > getMaxHealth()){
+			health = getMaxHealth();
+		}
 	}
 	@Override
 	public void healFull() {
@@ -48,8 +61,7 @@ public abstract class FighterEnemy implements Fighter {
 	public void stronger(int value) {
 		if ((strength += value) > level.getStrength()){
 			strength = level.getStrength();
-		}
-		
+		}	
 	}
 	@Override
 	public int getHealth() {

@@ -10,5 +10,17 @@ public class Serpent extends FighterEnemy {
 		super(aLevel);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	@Override
+	public int getStrength() {
+		return (int) Math.floor(super.getStrength()*FUERZA);
+	}
+	@Override
+	public int getMaxHealth() {
+		return (int)Math.floor(super.getMaxHealth()*SALUD);
+	}
+	@Override
+	public void heal(int value) {
+		//exception
+	}
 }
