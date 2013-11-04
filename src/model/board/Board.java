@@ -24,7 +24,8 @@ public abstract class Board {
 			}
 		}
 		setContents();
-		heroPosition = getHeroInitPosition();
+		heroPosition = getHeroInitPosition(); //codigo original
+		//heroPosition = new Point(3,2); // inventado para que funcione
 		// Aqui se debe ubicar inicialmente al jugador
 		g[heroPosition.y][heroPosition.x].setContent( new Hero(new FighterHero() ));
 		cleanFog(heroPosition);

@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
-import model.Game;
 import model.board.Move;
 import model.board.level.GameLevelX;
 

@@ -23,9 +23,13 @@ public abstract class FighterEnemy implements Fighter {
 	public Content interact(Fighter hero) {
 		hero.injured(strength);
 		if(hero.isAlive()){
-			return this;
+			injured(hero.getStrength());
+			if(!isAlive()){
+				hero.addExperience(this.getLevel().getValue());
+				return changeFor();
+			}
 		}
-		return changeFor();
+		return this;
 	}
 
 	//el método se ocupa de devolver el tipo de contenido que debe reemplazar a la instancia cuando esta "desaparece"
@@ -35,7 +39,7 @@ public abstract class FighterEnemy implements Fighter {
 	
 	@Override
 	public boolean isAlive() {
-		return health == 0;
+		return health != 0;
 	}
 	@Override
 	public void injured(int value) {

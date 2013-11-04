@@ -24,7 +24,7 @@ public abstract class ValuableElements implements Valuable {
 	}
 
 	@Override
-	public int getValue() {
+public int getValue() {
 		return value;
 	}
 

@@ -9,7 +9,6 @@ public class FighterHero implements Fighter {
 	private int strength = 5; // predetermined
 	private Level level = new LevelHero(); // 1 es nivel en el que arranca, 20 es maxLevel
 	private int experience;
-	private int sword = 0;
 	
 	public FighterHero(int health, int strength, Level level2, int experience){
 		this.health = health;
@@ -29,7 +28,7 @@ public class FighterHero implements Fighter {
 
 	@Override
 	public boolean isAlive() {
-		return health == 0;
+		return health != 0;
 	}
 	@Override
 	public void injured(final int value) {
@@ -49,7 +48,7 @@ public class FighterHero implements Fighter {
 	}
 	@Override
 	public int getStrength() {
-		return strength + sword;
+		return level.getStrength();
 	}
 	@Override
 	public void stronger(int value) {
@@ -69,15 +68,19 @@ public class FighterHero implements Fighter {
 		return level;
 	}
 	@Override
-	public boolean hasMaxLevel() { // en el caso del hero, siempre es true (monstruos no tienen)
-		return true;
+	public boolean hasMaxLevel() { 
+		return getLevel().getValue() == getLevel().getMaxLevel();
 	}
 	@Override
 	public void addExperience(int value) {
-		if ((experience += value) > getMaxExperience()) {
+		if ((experience += value) >= getMaxExperience()) {
+			int additional = experience % getMaxExperience(); 
 			level.levelUp();
-			experience = 0;
 			health = getMaxHealth();
+			experience = 0;
+			if (additional != 0) {
+				experience = additional;
+			}
 		}
 	}
 	@Override
@@ -91,9 +94,5 @@ public class FighterHero implements Fighter {
 	@Override
 	public Content interact(Fighter hero) {
 		return null;
-	}
-	
-	public void setSword(int value){
-		this.sword = value;
 	}
 }

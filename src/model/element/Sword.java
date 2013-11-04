@@ -2,6 +2,7 @@ package model.element;
 
 import model.board.Content;
 import model.fighter.Fighter;
+import model.fighter.FighterHero;
 
 public class Sword extends ValuableElements {
 
@@ -11,8 +12,8 @@ public class Sword extends ValuableElements {
 	
 	@Override
 	public Content interact(Fighter hero){
-		
-		return null;
+		hero.stronger(getValue());
+		return hero;
 	}	
 	
 }

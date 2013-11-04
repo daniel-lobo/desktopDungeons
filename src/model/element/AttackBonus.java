@@ -11,7 +11,7 @@ public class AttackBonus extends ValuableElements {
 	
 	@Override
 	public Content interact(Fighter hero){
-		hero.stronger(super.getValue());
+		hero.stronger(getValue());
 		return null;
 	}
 }

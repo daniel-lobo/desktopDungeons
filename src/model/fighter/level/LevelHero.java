@@ -7,7 +7,7 @@ public class LevelHero extends Level {
 	}
 	@Override
 	public int getMaxHealth() {
-		return 10*getValue();
+		return 100*getValue();
 	}
 	@Override
 	public int getStrength() {

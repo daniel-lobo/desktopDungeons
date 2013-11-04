@@ -10,6 +10,7 @@ import model.fighter.Goblin;
 import model.fighter.Golem;
 import model.fighter.Hero;
 import model.fighter.Serpent;
+import model.fighter.level.LevelEnemies;
 
 public class GameLevelX extends Board{
 	private int enemies = 5;
@@ -22,9 +23,9 @@ public class GameLevelX extends Board{
 	 */
 	protected void setContents() {
 		//get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new FighterHero()); aqui no es donde se agrega el hero
-		get(1,6).setContent(new Goblin());
-		get(7,7).setContent(new Serpent());
-		get(8,3).setContent(new Golem());
+		get(1,6).setContent(new Goblin(new LevelEnemies(1)));
+		get(7,7).setContent(new Serpent(new LevelEnemies(2)));
+		get(8,3).setContent(new Golem(new LevelEnemies(3)));
 		// ponemos las paredes 
 		get(2,6).setContent(new Wall());
 		get(3,6).setContent(new Wall());
@@ -53,7 +54,7 @@ public class GameLevelX extends Board{
 
 	@Override
 	protected Point getHeroInitPosition() {
-		return heroInitPosition;
+		return new Point(3,2);
 	}
 
 	@Override
