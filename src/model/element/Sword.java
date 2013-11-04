@@ -12,8 +12,7 @@ public class Sword extends ValuableElements {
 	
 	@Override
 	public Content interact(Fighter hero){
-		hero.stronger(getValue());
-		return hero;
+		return new SwordHero(hero, this);
 	}	
 	
 }

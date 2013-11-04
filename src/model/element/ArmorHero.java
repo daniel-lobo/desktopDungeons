@@ -1,13 +1,14 @@
 package model.element;
 
+import model.fighter.Fighter;
 import model.fighter.FighterHero;
 import model.fighter.Hero;
 import model.fighter.level.Level;
 
 public class ArmorHero extends Hero {
 	
-	public ArmorHero(int health, int strength, Level level, int experience){
-		super(new FighterHero(health, strength, level, experience));
+	public ArmorHero(Fighter hero){
+		super(hero);
 	}
 	@Override
 	public void injured(final int value) {
