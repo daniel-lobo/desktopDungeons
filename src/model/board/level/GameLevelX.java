@@ -4,6 +4,7 @@ import java.awt.Point;
 
 
 import model.board.Board;
+import model.element.Armor;
 import model.element.Wall;
 import model.fighter.FighterHero;
 import model.fighter.Goblin;
@@ -26,6 +27,9 @@ public class GameLevelX extends Board{
 		get(1,6).setContent(new Goblin(new LevelEnemies(1)));
 		get(7,7).setContent(new Serpent(new LevelEnemies(2)));
 		get(8,3).setContent(new Golem(new LevelEnemies(3)));
+		get(1,10).setContent(new Serpent(new LevelEnemies(1)));
+		get(6,2).setContent(new Goblin(new LevelEnemies(1)));
+		get(0,0).setContent(new Armor());
 		// ponemos las paredes 
 		get(2,6).setContent(new Wall());
 		get(3,6).setContent(new Wall());
@@ -51,6 +55,10 @@ public class GameLevelX extends Board{
 		get(10,8).setContent(new Wall());
 		
 	}
+	
+	public void reduceNumberOfEnemies(){
+		enemies--;
+	}
 
 	@Override
 	protected Point getHeroInitPosition() {
@@ -59,7 +67,7 @@ public class GameLevelX extends Board{
 
 	@Override
 	public boolean gameOver() {
-		return !getHero().isAlive();
+		return !getHero().isAlive() || playerWon();
 	}
 
 	@Override

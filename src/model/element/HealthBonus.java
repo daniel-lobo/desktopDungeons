@@ -11,6 +11,6 @@ public class HealthBonus extends ValuableElements {
 	@Override
 	public Content interact(Fighter hero){
 		hero.heal(super.getValue());
-		return null;
+		return hero;
 	}
 }

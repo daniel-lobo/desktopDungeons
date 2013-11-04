@@ -2,6 +2,8 @@ package model.board;
 
 import java.awt.Point;
 
+import model.element.Blood;
+import model.element.Sword;
 import model.fighter.FighterHero;
 import model.fighter.Hero;
 
@@ -27,7 +29,7 @@ public abstract class Board {
 		heroPosition = getHeroInitPosition(); //codigo original
 		//heroPosition = new Point(3,2); // inventado para que funcione
 		// Aqui se debe ubicar inicialmente al jugador
-		g[heroPosition.y][heroPosition.x].setContent( new Hero(new FighterHero() ));
+		g[heroPosition.y][heroPosition.x].setContent(new Hero(new FighterHero()));
 		cleanFog(heroPosition);
 	}	
 
@@ -43,6 +45,9 @@ public abstract class Board {
 					cleanFog(heroPosition);
 				} else if (g[newPosition.y][newPosition.x].canInteract()) {
 					g[newPosition.y][newPosition.x].interact(getHero());
+					if ((g[newPosition.y][newPosition.x].getContent() instanceof Blood) || (g[newPosition.y][newPosition.x].getContent() instanceof Sword)) {
+						reduceNumberOfEnemies();
+					}
 				}
 			}
 		}
@@ -85,4 +90,6 @@ public abstract class Board {
 	public abstract boolean gameOver();
 	
 	public abstract boolean playerWon();
+	
+	public abstract void reduceNumberOfEnemies();
 }

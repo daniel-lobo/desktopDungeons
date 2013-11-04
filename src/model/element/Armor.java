@@ -11,7 +11,6 @@ public class Armor implements Content {
 
 	@Override
 	public boolean canWalkOver() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

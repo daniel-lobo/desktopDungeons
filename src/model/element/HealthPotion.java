@@ -19,7 +19,7 @@ public class HealthPotion implements Content {
 	@Override
 	public Content interact(Fighter hero) {
 		hero.healFull();
-		return null;
+		return hero;
 	}
 
 }

@@ -48,7 +48,7 @@ public class FighterHero implements Fighter {
 	}
 	@Override
 	public int getStrength() {
-		return level.getStrength();
+		return strength;
 	}
 	@Override
 	public void stronger(int value) {
@@ -77,6 +77,7 @@ public class FighterHero implements Fighter {
 			int additional = experience % getMaxExperience(); 
 			level.levelUp();
 			health = getMaxHealth();
+			strength = level.getStrength();
 			experience = 0;
 			if (additional != 0) {
 				experience = additional;
@@ -91,6 +92,8 @@ public class FighterHero implements Fighter {
 	public int getMaxExperience() {
 		return level.getMaxExperience();
 	}
+	
+	
 	@Override
 	public Content interact(Fighter hero) {
 		return null;
