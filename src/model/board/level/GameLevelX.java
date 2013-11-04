@@ -6,7 +6,10 @@ import java.awt.Point;
 import model.board.Board;
 import model.element.Wall;
 import model.fighter.FighterHero;
+import model.fighter.Goblin;
+import model.fighter.Golem;
 import model.fighter.Hero;
+import model.fighter.Serpent;
 
 public class GameLevelX extends Board{
 	private int enemies = 5;

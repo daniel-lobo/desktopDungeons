@@ -1,6 +1,7 @@
 package model.fighter;
 
 import model.board.Content;
+import model.element.Blood;
 import model.fighter.level.Level;
 import model.fighter.level.LevelEnemies;
 
