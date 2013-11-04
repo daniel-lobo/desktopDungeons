@@ -7,12 +7,21 @@ import model.board.Content;
 public class FighterHero implements Fighter {
 	private int health = 10; // predetermined
 	private int strength = 5; // predetermined
-	private LevelHero level = new LevelHero(); // 1 es nivel en el que arranca, 20 es maxLevel
+	private Level level = new LevelHero(); // 1 es nivel en el que arranca, 20 es maxLevel
 	private int experience;
+	private int sword = 0;
+	
+	public FighterHero(int health, int strength, Level level2, int experience){
+		this.health = health;
+		this.strength = strength;
+		this.level = level2;
+		this.experience = experience;
+	}
 	
 	public FighterHero(){
 		
 	}
+	
 	@Override
 	public boolean canWalkOver() {
 		return false;
@@ -40,7 +49,7 @@ public class FighterHero implements Fighter {
 	}
 	@Override
 	public int getStrength() {
-		return strength;
+		return strength + sword;
 	}
 	@Override
 	public void stronger(int value) {
@@ -50,6 +59,7 @@ public class FighterHero implements Fighter {
 	public int getHealth() {
 		return health;
 	}
+	
 	@Override
 	public int getMaxHealth() {
 		return level.getMaxHealth();
@@ -81,5 +91,9 @@ public class FighterHero implements Fighter {
 	@Override
 	public Content interact(Fighter hero) {
 		return null;
+	}
+	
+	public void setSword(int value){
+		this.sword = value;
 	}
 }

@@ -17,8 +17,6 @@ public class Armor implements Content {
 
 	@Override
 	public Content interact(Fighter hero) {
-		return new HeroArmor(hero);
+		return new ArmorHero(hero.getHealth(), hero.getStrength(), hero.getLevel(), hero.getExperience());
 	}
-	
-	
 }

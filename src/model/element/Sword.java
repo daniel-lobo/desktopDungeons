@@ -5,14 +5,14 @@ import model.fighter.Fighter;
 
 public class Sword extends ValuableElements {
 
-	public Sword(int aValue) {
-		super(aValue);
+	public Sword(int value) {
+		super(value);
 	}
 	
 	@Override
-	public Content interact(Fighter aHero){
+	public Content interact(Fighter hero){
 		
 		return null;
 	}	
-	//falta terminar de resolver el interact.
+	
 }
