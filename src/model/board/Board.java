@@ -13,6 +13,7 @@ public abstract class Board {
 	
 	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Point heroPosition;
+	private int numberOfMoves = 0;
 	
 	public Board() {
 		initialize();
@@ -43,6 +44,7 @@ public abstract class Board {
 					g[heroPosition.y][heroPosition.x].removeContent();
 					heroPosition = newPosition;
 					cleanFog(heroPosition);
+					numberOfMoves++;
 				} else if (g[newPosition.y][newPosition.x].canInteract()) {
 					g[newPosition.y][newPosition.x].interact(getHero());
 					if ((g[newPosition.y][newPosition.x].getContent() instanceof Blood) || (g[newPosition.y][newPosition.x].getContent() instanceof Sword)) {

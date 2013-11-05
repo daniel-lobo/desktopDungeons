@@ -14,6 +14,7 @@ import model.element.Blood;
 import model.element.HealthBonus;
 import model.element.HealthPotion;
 import model.element.Sword;
+import model.element.SwordHero;
 import model.element.Wall;
 import model.fighter.Fighter;
 import model.fighter.Goblin;
@@ -46,7 +47,6 @@ public class ImageManager {
 			images.put(HealthBonus.class.getName(), ImageUtils.loadImage("resources/healthbonus.png"));
 			images.put(HealthPotion.class.getName(), ImageUtils.loadImage("resources/healthPotion.png"));
 			images.put(AttackBonus.class.getName(), ImageUtils.loadImage("resources/attackbonus.png"));
-			
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
 		}
 		catch(Exception e){

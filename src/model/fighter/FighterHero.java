@@ -5,9 +5,9 @@ import model.fighter.level.LevelHero;
 import model.board.Content;
 
 public class FighterHero implements Fighter {
-	private int health = 10; // predetermined
-	private int strength = 5; // predetermined
-	private Level level = new LevelHero(); // 1 es nivel en el que arranca, 20 es maxLevel
+	private int health;
+	private int strength;
+	private Level level; 
 	private int experience;
 	
 	public FighterHero(int health, int strength, Level level2, int experience){
@@ -18,7 +18,9 @@ public class FighterHero implements Fighter {
 	}
 	
 	public FighterHero(){
-		
+		level = new LevelHero();
+		health = getMaxHealth();
+		strength = level.getStrength();
 	}
 	
 	@Override
