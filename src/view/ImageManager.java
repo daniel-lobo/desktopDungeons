@@ -14,7 +14,7 @@ import model.element.Blood;
 import model.element.HealthBonus;
 import model.element.HealthPotion;
 import model.element.Sword;
-import model.element.SwordHero;
+
 import model.element.Wall;
 import model.fighter.Fighter;
 import model.fighter.Goblin;
