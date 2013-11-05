@@ -11,7 +11,7 @@ public class Hero implements Fighter {
 		this.fighter = fighter;
 	}
 	
-	protected Fighter getFighter() {
+	public Fighter getFighter() {
 		return fighter;
 	}
 	

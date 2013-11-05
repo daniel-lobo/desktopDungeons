@@ -47,6 +47,7 @@ public class ImageManager {
 			images.put(HealthBonus.class.getName(), ImageUtils.loadImage("resources/healthbonus.png"));
 			images.put(HealthPotion.class.getName(), ImageUtils.loadImage("resources/healthPotion.png"));
 			images.put(AttackBonus.class.getName(), ImageUtils.loadImage("resources/attackbonus.png"));
+			images.put(SwordHero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
 		}
 		catch(Exception e){

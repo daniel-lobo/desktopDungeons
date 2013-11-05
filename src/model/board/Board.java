@@ -1,8 +1,12 @@
 package model.board;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import model.element.Blood;
+import model.element.MoveListener;
 import model.element.Sword;
 import model.fighter.FighterHero;
 import model.fighter.Hero;
@@ -13,7 +17,7 @@ public abstract class Board {
 	
 	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Point heroPosition;
-	private int numberOfMoves = 0;
+	private Set<MoveListener> listeners = new HashSet<MoveListener>();
 	
 	public Board() {
 		initialize();
@@ -27,9 +31,7 @@ public abstract class Board {
 			}
 		}
 		setContents();
-		heroPosition = getHeroInitPosition(); //codigo original
-		//heroPosition = new Point(3,2); // inventado para que funcione
-		// Aqui se debe ubicar inicialmente al jugador
+		heroPosition = getHeroInitPosition(); 
 		g[heroPosition.y][heroPosition.x].setContent(new Hero(new FighterHero()));
 		cleanFog(heroPosition);
 	}	
@@ -44,8 +46,10 @@ public abstract class Board {
 					g[heroPosition.y][heroPosition.x].removeContent();
 					heroPosition = newPosition;
 					cleanFog(heroPosition);
-					numberOfMoves++;
+					listenerMoved(listeners);
+					// llamar aca el metodo privado de recorrido de listeners
 				} else if (g[newPosition.y][newPosition.x].canInteract()) {
+					listenerMoved(listeners);
 					g[newPosition.y][newPosition.x].interact(getHero());
 					if ((g[newPosition.y][newPosition.x].getContent() instanceof Blood) || (g[newPosition.y][newPosition.x].getContent() instanceof Sword)) {
 						reduceNumberOfEnemies();
@@ -68,6 +72,16 @@ public abstract class Board {
 		}
 	}
 	
+	// Metodo para recorrer el set de listener y pasarles el heroMoves()
+	private void listenerMoved(Set<MoveListener> listeners){
+		for(MoveListener listener: listeners){
+			listener.heroMoves();
+		}
+	}
+	
+	public Set<MoveListener> getListeners(){
+		return this.listeners;
+	}
 	
 	public Point getHeroPosition(){
 		return heroPosition;
@@ -84,6 +98,8 @@ public abstract class Board {
 	protected Cell[][] g(){
 		return g;
 	}
+	
+	// aca tengo que hacer el add listener
 	
 	protected abstract void setContents();
 

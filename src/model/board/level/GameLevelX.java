@@ -2,14 +2,11 @@ package model.board.level;
 
 import java.awt.Point;
 
-
 import model.board.Board;
 import model.element.Armor;
 import model.element.Wall;
-import model.fighter.FighterHero;
 import model.fighter.Goblin;
 import model.fighter.Golem;
-import model.fighter.Hero;
 import model.fighter.Serpent;
 import model.fighter.level.LevelEnemies;
 
@@ -18,16 +15,13 @@ public class GameLevelX extends Board{
 	private Point heroInitPosition = new Point(3,2); // a mano
 
 	@Override
-	/*
-	 * Puede estar todo al reves, porque Laura uso otra Logica
-	 */
 	protected void setContents() {
-		//get((int)heroInitPosition.getX(), (int)heroInitPosition.getY()).setContent(new FighterHero()); aqui no es donde se agrega el hero
-		get(1,6).setContent(new Goblin(new LevelEnemies(1)));
+		get(1,6).setContent(addGoblin(1));
+		get(6,2).setContent(addGoblin(1));
+		
 		get(7,7).setContent(new Serpent(new LevelEnemies(2)));
 		get(8,3).setContent(new Golem(new LevelEnemies(3)));
 		get(1,10).setContent(new Serpent(new LevelEnemies(1)));
-		get(6,2).setContent(new Goblin(new LevelEnemies(1)));
 		get(0,0).setContent(new Armor());
 		// ponemos las paredes 
 		get(2,6).setContent(new Wall());
@@ -55,6 +49,12 @@ public class GameLevelX extends Board{
 		
 	}
 	
+	public Goblin addGoblin(final int level){
+		Goblin goblin = new Goblin(new LevelEnemies(level));
+		getListeners().add(goblin);
+		return goblin;
+	}
+	
 	public void reduceNumberOfEnemies(){
 		enemies--;
 	}
@@ -73,5 +73,4 @@ public class GameLevelX extends Board{
 	public boolean playerWon() {
 		return enemies == 0;
 	}
-	
 }

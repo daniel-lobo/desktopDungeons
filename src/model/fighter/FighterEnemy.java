@@ -47,6 +47,7 @@ public abstract class FighterEnemy implements Fighter {
 			health = 0;
 		}
 	}
+	
 	//este método es necesario para los Goblin, en los otros dos está reecrito y anulado.
 	@Override
 	public void heal(int value) {
