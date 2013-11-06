@@ -13,7 +13,7 @@ public abstract class FighterEnemy implements Fighter {
 	public FighterEnemy (LevelEnemies aLevel) {
 		level = aLevel;
 		strength = level.getStrength();
-		health = level.getMaxHealth();
+		health = getMaxHealth();
 	}
 	@Override
 	public boolean canWalkOver() {

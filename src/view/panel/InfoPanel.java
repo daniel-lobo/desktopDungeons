@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import model.Game;
 import model.board.Content;
 import model.fighter.Fighter;
+import model.fighter.FighterEnemy;
 import view.ImageManager;
 
 public class InfoPanel extends JPanel implements GamePanelListener {

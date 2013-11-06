@@ -25,7 +25,6 @@ public class FighterPanel extends JPanel {
 		this.fighter = fighter;
 		this.imgManager = imgManager;
 		setLayout(null);
-		
 		healthBar = new JProgressBar(0, fighter.getMaxHealth());
 		healthBar.setForeground(Color.RED);
 		healthBar.setBounds(80,48,100,15);
@@ -38,6 +37,7 @@ public class FighterPanel extends JPanel {
 	public void refreshData() {
 		healthBar.setMaximum(fighter.getMaxHealth());
 		healthBar.setValue(fighter.getHealth());
+		
 		healthBar.setString(fighter.getHealth() + "/" + fighter.getMaxHealth());
 	}
 

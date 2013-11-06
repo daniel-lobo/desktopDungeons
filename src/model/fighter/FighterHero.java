@@ -79,7 +79,7 @@ public class FighterHero implements Fighter {
 			int additional = experience % getMaxExperience(); 
 			level.levelUp();
 			health = getMaxHealth();
-			strength = level.getStrength();
+			setStrenght(level.getStrength());
 			experience = 0;
 			if (additional != 0) {
 				experience = additional;
@@ -90,6 +90,11 @@ public class FighterHero implements Fighter {
 	public int getExperience() {
 		return experience;
 	}
+	
+	public void setStrenght(int str){
+		strength = str;
+	}
+	
 	@Override
 	public int getMaxExperience() {
 		return level.getMaxExperience();

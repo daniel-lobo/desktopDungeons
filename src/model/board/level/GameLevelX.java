@@ -20,6 +20,7 @@ public class GameLevelX extends Board{
 		get(6,2).setContent(addGoblin(1));
 		
 		get(7,7).setContent(new Serpent(new LevelEnemies(2)));
+		get(1,3).setContent(new Golem(new LevelEnemies(3)));
 		get(8,3).setContent(new Golem(new LevelEnemies(3)));
 		get(1,10).setContent(new Serpent(new LevelEnemies(1)));
 		get(0,0).setContent(new Armor());

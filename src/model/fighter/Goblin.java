@@ -12,8 +12,6 @@ public class Goblin extends FighterEnemy implements Content, MoveListener{
 
 	public Goblin(LevelEnemies aLevel) {
 		super(aLevel);
-		//listener
-		// asi cada vez que agrego un goblin en levelX, se agrega un listener
 	}
 	
 	@Override
