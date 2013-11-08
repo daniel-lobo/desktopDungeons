@@ -2,7 +2,6 @@ package model.board;
 
 import java.awt.Point;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import model.element.Blood;

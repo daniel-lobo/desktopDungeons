@@ -1,9 +1,7 @@
 package model.element;
 
 import model.fighter.Fighter;
-import model.fighter.FighterHero;
 import model.fighter.Hero;
-import model.fighter.level.Level;
 
 public class ArmorHero extends Hero {
 	

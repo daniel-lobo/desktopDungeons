@@ -12,8 +12,7 @@ import model.fighter.level.LevelEnemies;
 
 public class GameLevelX extends Board{
 	private int enemies = 5;
-	private Point heroInitPosition = new Point(3,2); // a mano
-
+	
 	@Override
 	protected void setContents() {
 		get(1,6).setContent(addGoblin(1));

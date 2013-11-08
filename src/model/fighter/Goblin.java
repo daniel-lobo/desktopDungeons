@@ -1,6 +1,5 @@
 package model.fighter;
 
-import model.board.Board;
 import model.board.Content;
 import model.element.MoveListener;
 import model.fighter.level.LevelEnemies;

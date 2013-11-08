@@ -20,7 +20,7 @@ public class Golem extends FighterEnemy implements Content {
 	
 	@Override
 	public int getStrength() {
-		return (super.getLevel().getValue());
+		return (int) Math.floor(super.getStrength()*FUERZA);
 	}
 	@Override
 	public int getMaxHealth() {

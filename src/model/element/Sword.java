@@ -12,7 +12,7 @@ public class Sword extends ValuableElements {
 	
 	@Override
 	public Content interact(Fighter hero){
-		return new Hero(new SwordHero(hero, this));
+		return new SwordHero(hero, this);
 	}	
 	
 }

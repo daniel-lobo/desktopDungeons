@@ -1,14 +1,15 @@
 package model.test;
 
-import static org.junit.Assert.*;
-
 import model.element.Armor;
+import model.element.AttackBonus;
 import model.element.HealthBonus;
 import model.element.HealthPotion;
 import model.element.Sword;
+import model.element.SwordHero;
 import model.fighter.FighterEnemy;
 import model.fighter.FighterHero;
 import model.fighter.Goblin;
+import model.fighter.Hero;
 import model.fighter.level.LevelEnemies;
 
 import org.junit.Assert;
@@ -18,96 +19,104 @@ public class ElementTest {
 
 	@Test
 	public void PotionTest() {
-		FighterHero f = new FighterHero();
-		HealthPotion h = new HealthPotion();
+		Hero hero = new Hero(new FighterHero());
+		HealthPotion potionH = new HealthPotion();
 		FighterEnemy e = new Goblin(new LevelEnemies(1));
 
-		while (e.isAlive()) {
-			e.interact(f);
+		while (e.isAlive()&& hero.isAlive()) {
+			e.interact(hero);
 		}
-		Assert.assertFalse(f.getMaxHealth() == f.getHealth());
-		h.interact(f);
-		Assert.assertTrue(f.getMaxHealth() == f.getHealth());
+		Assert.assertFalse(hero.getMaxHealth() == hero.getHealth());
+		potionH.interact(hero);
+		Assert.assertTrue(hero.getMaxHealth() == hero.getHealth());
 
 	}
 
 	@Test
 	public void HealthBonusTest() {
 
-		FighterHero f = new FighterHero();
-		HealthBonus h = new HealthBonus(20);
-
-		FighterEnemy e = new Goblin(new LevelEnemies(2));
-
-		while (e.isAlive()) {
-			e.interact(f);
-		}
-		Assert.assertFalse(f.getHealth() > 90);
-		h.interact(f);
-		Assert.assertTrue(f.getHealth() > 90);
+		int value = 3;
+		Hero hero = new Hero(new FighterHero());
+		HealthBonus healthB = new HealthBonus(value);
+		FighterEnemy goblin = new Goblin(new LevelEnemies(2));
+		int injValue = hero.getMaxHealth() - goblin.getStrength();
+				
+		Assert.assertTrue(healthB.getValue()==value);
+		
+		goblin.interact(hero);
+		Assert.assertTrue(hero.getHealth() == injValue);
+		healthB.interact(hero);
+		Assert.assertTrue(hero.getHealth() == (injValue + healthB.getValue()));
+		healthB.interact(hero);
+		Assert.assertTrue(hero.getHealth() == hero.getMaxHealth());
 
 	}
 
 	@Test
 	public void HealthPotionTest() {
 
-		FighterHero f = new FighterHero();
+		Hero hero = new Hero(new FighterHero());
 		HealthPotion h = new HealthPotion();
 
 		FighterEnemy e = new Goblin(new LevelEnemies(2));
 
-		while (e.isAlive()) {
-			e.interact(f);
+		while (e.isAlive()&&hero.isAlive()) {
+			e.interact(hero);
 		}
-		Assert.assertFalse(f.getHealth() == f.getMaxHealth());
-		h.interact(f);
-		Assert.assertTrue(f.getHealth() == f.getMaxHealth());
+		Assert.assertFalse(hero.getHealth() == hero.getMaxHealth());
+		h.interact(hero);
+		Assert.assertTrue(hero.getHealth() == hero.getMaxHealth());
 
 	}
 
 	@Test
 	public void ArmorTest() {
 
-		FighterHero f = new FighterHero();
+		Hero hero = new Hero(new FighterHero());
 		Armor a = new Armor();
 		FighterEnemy e = new Goblin(new LevelEnemies(3));
 
-		while (e.isAlive()) {
-			e.interact(f);
-		}
-		Assert.assertFalse(f.getHealth() > 90);
+		e.interact(hero);
+		
+		Assert.assertTrue(hero.getHealth() == 2);
 
-		FighterHero g = new FighterHero();
-
-		a.interact(g);
-
-		while (e.isAlive()) {
-			e.interact(g);
-		}
-
-		Assert.assertTrue(g.getHealth() > 90);
+		Hero aH= (Hero)a.interact(new Hero(new FighterHero()));
+		e.interact(aH);
+		
+		Assert.assertTrue(aH.getHealth() == 5);
 	}
 
 	@Test
 	public void SwordTest() {
-		FighterHero f = new FighterHero();
-		FighterEnemy e = new Goblin(new LevelEnemies(4));
-		Sword s = new Sword(35);
-
-		while (f.isAlive()) {
-			e.interact(f);
+		Hero hero = new Hero(new FighterHero());
+		FighterEnemy goblin = new Goblin(new LevelEnemies(3));
+		Sword s = new Sword(5);
+		int healthG;
+		while (hero.isAlive()&& goblin.isAlive()) {
+			goblin.interact(hero);
 		}
-		Assert.assertFalse(f.isAlive());
+		Assert.assertFalse(hero.isAlive());
+		healthG = goblin.getHealth();
+		
+		Hero sH = (Hero)s.interact(new Hero(new FighterHero()));
+		Assert.assertTrue(sH instanceof SwordHero);
 
-		FighterHero g = new FighterHero();
-
-		s.interact(g);
-
-		while (e.isAlive()) {
-			e.interact(g);
-		}
-		Assert.assertTrue(g.isAlive());
-
+		goblin.interact(sH);
+		Assert.assertTrue(goblin.getHealth()== (healthG-sH.getLevel().getStrength()- s.getValue()));
+	
 	}
 
+	@Test
+	public void AttackBonusTest(){
+		AttackBonus aB = new AttackBonus(6);
+		Hero hero = new Hero(new FighterHero());
+		Goblin goblin = new Goblin(new LevelEnemies(2));
+		
+		aB.interact(hero);
+		goblin.interact(hero);
+		
+		Assert.assertTrue((goblin.getMaxHealth()-goblin.getHealth()) == (hero.getLevel().getStrength()+aB.getValue()));
+	
+		
+	}
 }

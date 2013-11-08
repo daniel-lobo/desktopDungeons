@@ -21,7 +21,7 @@ public abstract class FighterEnemy implements Fighter {
 	}
 	@Override
 	public Content interact(Fighter hero) {
-		hero.injured(strength);
+		hero.injured(getStrength());
 		if(hero.isAlive()){
 			injured(hero.getStrength());
 			if(!isAlive()){
@@ -87,16 +87,13 @@ public abstract class FighterEnemy implements Fighter {
 	}
 	@Override
 	public void addExperience(int value) {
-		//exception;
 	}
 	@Override
 	public int getExperience() {
-		// Exception
 		return 0;
 	}
 	@Override
 	public int getMaxExperience() {
-		// Exception
 		return 0;
 	}
 }
