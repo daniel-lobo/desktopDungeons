@@ -4,6 +4,9 @@ import java.awt.Point;
 
 import model.board.Board;
 import model.element.Armor;
+import model.element.AttackBonus;
+import model.element.HealthBonus;
+import model.element.HealthPotion;
 import model.element.Wall;
 import model.fighter.Goblin;
 import model.fighter.Golem;
@@ -22,6 +25,9 @@ public class GameLevelX extends Board{
 		get(1,3).setContent(new Golem(new LevelEnemies(3)));
 		get(8,3).setContent(new Golem(new LevelEnemies(3)));
 		get(1,10).setContent(new Serpent(new LevelEnemies(1)));
+		get(0,1).setContent(new AttackBonus(4));
+		get(0,2).setContent(new HealthBonus(3));
+		get(0,3).setContent(new HealthPotion());
 		get(0,0).setContent(new Armor());
 		// ponemos las paredes 
 		get(2,6).setContent(new Wall());
